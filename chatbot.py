@@ -5,11 +5,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 class SimpleChatBot:
     def __init__(self, filepath):
         self.questions, self.answers = self.load_data(filepath)
-        #print(self.answers)
-        
-        # self.vectorizer = TfidfVectorizer()
-        # self.question_vectors = self.vectorizer.fit_transform(self.questions)  # 질문을 TF-IDF로 변환
-       
+               
     def load_data(self, filepath):
         data = pd.read_csv(filepath)
         questions = data['Q'].tolist()  # 질문열만 뽑아 파이썬 리스트로 저장
@@ -64,17 +60,12 @@ class SimpleChatBot:
               
 # CSV 파일 경로를 지정하세요.
 filepath = 'ChatbotData.csv'
-# filepath = 'C:\\AI practice\\hw\\chatbot\\ChatbotData.csv'
 
 # 간단한 챗봇 인스턴스를 생성합니다.
 chatbot = SimpleChatBot(filepath)
-# print(chatbot.questions)
 
-# '종료'라는 단어가 입력될 때까지 챗봇과의 대화를 반복합니다.
 # while True:
 input_sentence = input('Q : ')
-# if input_sentence.lower() == '종료':
-#     break
 
 #samples 리스트의 각 요소에 대해 calc_distance(base, n) 함수를 호출하여 레벤슈타인 거리를 계산하고, 이를 기준으로 리스트를 정렬
 r = sorted(chatbot.questions, key = lambda n: chatbot.calc_distance(input_sentence,n))  
